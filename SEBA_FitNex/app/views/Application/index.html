@@ -1,4 +1,12 @@
+<link rel="stylesheet" type="text/css" href="mystyles.css" media="screen" />
+
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Login</a></li>
+<li><a href="@{Application.signup()}">Sign up</a></li>
+<li><a href="#">Tutorials</a></li>
+<li><a href="#">Exercises</a></li>
+</ul>
