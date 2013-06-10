@@ -1,12 +1,21 @@
 package models;
 
+import java.util.Random;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import play.db.jpa.Model;
+import play.db.jpa.GenericModel;
 
 @Entity
-public class Address extends Model{
+public class Address extends GenericModel{
+	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
+	public Long id;	
 	 
 	public String street;
 	public String number;
@@ -14,7 +23,7 @@ public class Address extends Model{
 	public String province;
 	public String country;
 	
-	@OneToOne(mappedBy="address")
+	@OneToOne(mappedBy="address", cascade=CascadeType.ALL)
     public User user;
 	
 	public Address() {

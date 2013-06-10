@@ -1,20 +1,26 @@
 package models;
  
-import java.util.*;
+import java.util.Date;
 
-import javax.persistence.*;
- 
-import play.db.jpa.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import play.db.jpa.GenericModel;
  
 @Entity
-public class User extends Model {
- 
+public class User extends GenericModel {
+	
+	@Id
     public String email;
+	
     public String password;
     public String fullname;
     public Date dateOfBirth;
     
     @OneToOne
+    @JoinColumn(name="address_id", referencedColumnName="id") 
     public Address address;
     public String phone;
     public String mobile;
