@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import models.Address;
+import models.Gender;
 import models.User;
 import play.mvc.Controller;
 
@@ -29,14 +30,20 @@ public class Application extends Controller {
     	render();
     }
    
-    public static void signupform(String email, String password, String fullname, String dateofbirth, String street, String number, String city, String province, String country, String phonenumber, String mobile){
+    public static void signupform(String email, String password, String fullname, String dateofbirth, String weight, String gender, String street, String number, String city, String province, String country, String phonenumber, String mobile){
     	Address address = new Address(street, phonenumber, city, province, country);
     	
     	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date dateStr;
 		try {
 			dateStr = formatter.parse(dateofbirth);
-			User user = new User(email, password, fullname, dateStr, address, phonenumber, mobile);
+			
+			Gender engender;
+			if (gender.equals("male"))
+				engender = Gender.MALE;
+			else
+				engender = Gender.FEMALE;
+			User user = new User(email, password, fullname, dateStr, engender, Double.parseDouble(weight), address, phonenumber, mobile);
 			System.out.println("E-mail: " + user.email);
 			address.save();
 			user.save();
