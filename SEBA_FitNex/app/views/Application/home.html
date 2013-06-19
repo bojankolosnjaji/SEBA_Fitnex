@@ -3,8 +3,8 @@
   xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
-    <script src="script.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="mainStyle.css" type="text/css" />
+    <script src="views/Application/script.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="public/stylesheets/mainStyle.css" type="text/css" />
     <title>FitNex</title>
     <meta content="omuyelijah" name="author" />
     <meta content="A general mockup for website pages" name="description" />
@@ -12,7 +12,7 @@
   </head>
   <body>
     <div id="leftDiv">
-      <div id="logoDiv"> <img src="pics/logo.png" style="height:100%;width:100%;"></img> </div>
+      <div id="logoDiv"> <img src="public/images/logo.png" style="height:100%;width:100%;"></img> </div>
       <div id="leftNavDiv">
         <ul>
           <li><a class="current" href="home.html">Home</a></li>
@@ -27,21 +27,30 @@
       </div>
     </div>
     <div id="centreDiv">
-      <div id="inspireQuotesDiv"> <img src="pics/banner_home.png" style="height:100%;width:100%;"></img></div>
+      <div id="inspireQuotesDiv"> <img src="public/images/banner_home.png" style="height:100%;width:100%;"></img></div>
       <div id="breadCrumbsDiv"><a href="home.html">Home</a></div>
       <div id="mainContentDiv"> </div>
     </div>
     <div id="rightDiv">
+    
+    
       <div id="loginBMIDiv">
+      #{if !signedUser}
         <form method="post" name="frmLogin" id="frmLogin" action="submit">
           <fieldset> <legend>Login</legend> <span>Username</span>    <input type="text"
               id="txtUsername" name="txtUsername" /> <br />
             <span>Password</span>     <input type="password" id="txtPassword" name="txtPassword" /><br />
             <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" /><br />
             <span>Don't have an account? <br />
-              <a href="registration.html">Join now for free.</a></span> </fieldset>
+              <a href="@{Application.signup()}">Join now for free.</a></span> </fieldset>
         </form>
+         #{/if}
+         #{else}
+    		Welcome, ${signedUser.fullname} <a href="@{Application.signout()}">Sign out</a> 
+		#{/else}
       </div>
+      
+     
       <div id="workoutDiv"> Workout Woman</div>
       <div id="searchDiv">
         <form method="post" name="frmSearch" id="frmSearch" action="submit">

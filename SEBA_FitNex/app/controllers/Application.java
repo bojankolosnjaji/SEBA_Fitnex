@@ -16,18 +16,20 @@ public class Application extends Controller {
     	if (signedUser==null || signedUser.email==null)
     	{
     		System.out.println("No user");
-    		render();
+    		renderTemplate("Application/home.html");
     	}
     	else
     	{
     		System.out.println("User signed in");
-    		render(signedUser);
+    		renderTemplate("Application/home.html", signedUser);
     	}
+    	
+    	
     }
     
     public static void signup(){
     	
-    	render();
+    	renderTemplate("Application/registration.html");
     }
    
     public static void signupform(String email, String password, String fullname, String dateofbirth, String weight, String gender, String street, String number, String city, String province, String country, String phonenumber, String mobile){
@@ -68,6 +70,8 @@ public class Application extends Controller {
     {
     	renderTemplate("Application/index.html");
     }
+    
+    
 
 
 }

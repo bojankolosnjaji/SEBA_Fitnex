@@ -15,7 +15,7 @@ import play.db.jpa.GenericModel;
 public class Address extends GenericModel{
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	public Long id;	
+	public Long id;
 	 
 	public String street;
 	public String number;
