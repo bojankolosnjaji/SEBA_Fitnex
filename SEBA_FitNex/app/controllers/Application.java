@@ -30,7 +30,7 @@ public class Application extends Controller {
     public static void signup(){
     	
     	renderTemplate("Application/registration.html");
-    }
+    } 
    
     public static void signupform(String txtFirstName, String txtLastName, String txtEmail, String txtPassword, String txtRepPassword, String txtDOB, String txtWeight, String rdGender, String txtStreet, String txtNumber, String txtCity, String txtProvince, String txtCountry, String txtPhoneNumber, String txtMobile, String chkAgree){
     	Address address = new Address(txtStreet, txtNumber, txtCity, txtProvince, txtCountry);
