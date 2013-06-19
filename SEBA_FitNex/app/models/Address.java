@@ -3,7 +3,7 @@ package models;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
-
+ 
 import play.db.jpa.Model;
 
 @Entity
