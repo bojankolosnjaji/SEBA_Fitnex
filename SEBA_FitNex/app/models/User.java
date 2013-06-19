@@ -18,7 +18,7 @@ import play.db.jpa.GenericModel;
 @Entity
 public class User extends GenericModel {
 	@Id @GeneratedValue (strategy = GenerationType.SEQUENCE) 
-	public Long id;
+	public Long id; 
 	
 	@Unique
     public String email;
