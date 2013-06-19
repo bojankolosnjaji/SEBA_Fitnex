@@ -11,8 +11,7 @@ public class HomePageQuotes extends Model{
 	public String content;
 	public String person;
 	
-	@Lob
-	public byte[] image;
+	public String image;
 	
 	
 

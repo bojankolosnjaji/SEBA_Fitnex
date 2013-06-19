@@ -16,8 +16,8 @@ import play.db.jpa.Model;
 public class Article extends Model{
 	String title;
 	public String content;
-	@Lob
-	public byte[] image;
+	
+	public String image;
 	public Date date;
 	public int numberOfVotes;
 	public double rank;
