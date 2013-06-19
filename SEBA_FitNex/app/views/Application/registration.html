@@ -64,7 +64,7 @@ form td.right {
 		<div id="mainContentDiv">
 			<h2>FitNex is Free!</h2>
 			<h3>Join us now.</h3>
-			<form name="frmRegister" id="frmRegister" method="post">
+			<form name="frmRegister" id="frmRegister" method="post" action="@{Application.signupform()}" >
 				<table>
 					<tbody>
 						<tr>
@@ -91,11 +91,7 @@ form td.right {
 							<td class="right">Retype Password</td>
 							<td><input type="password" name="txtPassword"
 								id="txtPassword" /></td>
-						</tr>
-						<tr>
-							<td class="right">Email</td>
-							<td><input type="email" name="txtEmail" id="txtEmail" /></td>
-						</tr>
+						</tr>						
 						<tr>
 							<td class="right">Date of birth: (DD/MM/YYYY)</td>
 							<td><input type="text" name="txtDOB" id="txtDOB"
@@ -140,7 +136,7 @@ form td.right {
 						</tr>
 						<tr>
 							<td class="right">Phone number:</td>
-							<td><input type="text" name="txtPhonenumber" value="" size="25"
+							<td><input type="text" name="txtPhoneNumber" value="" size="25"
 								maxlength="50" /></td>
 						</tr>
 						<tr>

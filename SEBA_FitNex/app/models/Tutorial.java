@@ -29,7 +29,7 @@ public class Tutorial extends Model{
     @OneToMany(mappedBy="tutorial")
     public List<TutorialComment> comments;
     
-    @OneToMany(mappedBy="step")
+    @OneToMany(mappedBy="tutorial")
     public List<Step> steps;
 	
 	

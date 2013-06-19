@@ -32,20 +32,20 @@ public class Application extends Controller {
     	renderTemplate("Application/registration.html");
     }
    
-    public static void signupform(String email, String password, String fullname, String dateofbirth, String weight, String gender, String street, String number, String city, String province, String country, String phonenumber, String mobile){
-    	Address address = new Address(street, phonenumber, city, province, country);
+    public static void signupform(String txtEmail, String txtPassword, String txtFirstName, String txtLastName, String txtDateOfBirth, String txtWeight, String rdGender, String txtStreet, String txtNumber, String txtCity, String txtProvince, String txtCountry, String txtPhoneNumber, String txtMobile, String selPref, String chkAgree){
+    	Address address = new Address(txtStreet, txtNumber, txtCity, txtProvince, txtCountry);
     	
     	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date dateStr;
 		try {
-			dateStr = formatter.parse(dateofbirth);
+			dateStr = formatter.parse(txtDateOfBirth);
 			
 			Gender engender;
-			if (gender.equals("male"))
+			if (rdGender.equals("male"))
 				engender = Gender.MALE;
 			else
 				engender = Gender.FEMALE;
-			User user = new User(email, password, fullname, dateStr, engender, Double.parseDouble(weight), address, phonenumber, mobile);
+			User user = new User(txtEmail, txtPassword, txtFirstName, txtLastName, dateStr, engender, Double.parseDouble(txtWeight), address, txtPhoneNumber, txtMobile);
 			System.out.println("E-mail: " + user.email);
 			address.save();
 			user.save();
@@ -61,7 +61,7 @@ public class Application extends Controller {
     	System.out.println("Sign in form" + email);
     	
     	User signedUser = User.findById(email);
-    	System.out.println("Name:" + signedUser.fullname);
+    	System.out.println("Name:" + signedUser.firstName + " " + signedUser.lastName);
     	renderTemplate("Application/index.html", signedUser);       	
     	
     }

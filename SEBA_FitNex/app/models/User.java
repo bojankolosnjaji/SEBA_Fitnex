@@ -19,7 +19,8 @@ public class User extends Model {
     public String email;
 	
     public String password;
-    public String fullname;
+    public String firstName;
+    public String lastName;
     public Date dateOfBirth;
     public Gender gender;
     public double weight;
@@ -34,8 +35,8 @@ public class User extends Model {
     @OneToMany(mappedBy="user")
     public List<ExerciseComment> exerciseComments;
     
-    @OneToMany(mappedBy="excercise")
-    public List<UserExercisePreference> userExcercisePreferences;
+    @OneToMany(mappedBy="exercise")
+    public List<UserExercisePreference> userExercisePreferences;
     
     @OneToMany(mappedBy="user")
     public List<BMIHistory> BMIHistoryList;
@@ -49,13 +50,14 @@ public class User extends Model {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(String email, String password, String fullname,
-			Date dateOfBirth, Gender gender, double weight,
+	public User(String email, String password, String firstName,
+			String lastName, Date dateOfBirth, Gender gender, double weight,
 			Address address, String phone, String mobile) {
 		super();
 		this.email = email;
 		this.password = password;
-		this.fullname = fullname;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
 		this.weight = weight;
@@ -63,7 +65,7 @@ public class User extends Model {
 		this.articleComments = new ArrayList<ArticleComment>();
 		this.tutorialComments = new ArrayList<TutorialComment>();
 		this.exerciseComments = new ArrayList<ExerciseComment>();
-		this.userExcercisePreferences = new ArrayList<UserExercisePreference>();
+		this.userExercisePreferences = new ArrayList<UserExercisePreference>();
 		this.BMIHistoryList= new ArrayList<BMIHistory>();
 		this.address = address;
 		this.phone = phone;

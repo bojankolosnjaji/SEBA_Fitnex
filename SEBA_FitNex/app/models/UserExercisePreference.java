@@ -19,7 +19,7 @@ public class UserExercisePreference extends Model{
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)	
-	public Exercise excercise;
+	public Exercise exercise;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	public User user;

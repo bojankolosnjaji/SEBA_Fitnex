@@ -15,7 +15,7 @@ public class ExerciseComment extends Model{
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)	
-	public Exercise excecise;
+	public Exercise exercise;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	public User user;
