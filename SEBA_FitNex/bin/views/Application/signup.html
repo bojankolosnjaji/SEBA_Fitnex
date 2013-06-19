@@ -1,0 +1,53 @@
+#{extends 'main.html' /}
+#{set title:'Sign up' /}
+
+<form action="@{Application.signupform()}" method="post">
+	<table BORDER="0">
+   <tr>
+   <td>E-mail:</td><td><input type="text" name="email" value="" size="25" maxlength="50" /></td>
+   </tr>
+   <tr>
+   <td>Password:</td><td> <input type="password" name="password" value="" size="25" maxlength="50" /> </td>
+   </tr>>
+   <tr>
+   <td>Full Name: </td><td><input type="text" name="fullname" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>Date of birth:</td><td> <input type="text" name="dateofbirth" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>Weight:</td><td> <input type="text" name="weight (kg)" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>Gender:</td>
+   <td>
+   		<input type="radio" name="gender" value="male">Male<br>
+		<input type="radio" name="gender" value="female">Female
+	</td>
+   </tr>
+   <tr>
+   <td>Street:</td><td> <input type="text" name="street" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>Number:</td><td> <input type="text" name="number" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>City:</td><td> <input type="text" name="city" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>Province:</td><td> <input type="text" name="province" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>Country:</td><td> <input type="text" name="country" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>Phone number: </td><td><input type="text" name="phonenumber" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td>Mobile: </td><td><input type="text" name="mobile" value="" size="25" maxlength="50" /> </td>
+   </tr>
+   <tr>
+   <td> </td><td><input type="submit" text="Submit" name="submit" /> </td>
+   </tr>
+   </table>
+</form>

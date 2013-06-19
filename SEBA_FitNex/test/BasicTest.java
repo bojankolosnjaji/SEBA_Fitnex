@@ -1,5 +1,3 @@
-import models.User;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,10 +14,7 @@ public class BasicTest extends UnitTest {
 	
     @Test
     public void clearDatabase() {
-        System.out.println("Size = " + User.findAll().size());
-        
-        
-        
+        //Fixtures.executeSQL("CLEAR DATABASE");
     }
 
 }

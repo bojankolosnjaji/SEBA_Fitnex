@@ -10,7 +10,7 @@ public class TutorialController extends Controller {
     	System.out.println("INDEX");
     	if (tutorial==null)
     	{
-    		System.out.println("Nof tutorial");
+    		System.out.println("No tutorial");
     		renderTemplate("Application/tutorial.html");
     	}
     	else
