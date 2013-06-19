@@ -5,7 +5,8 @@
 # Home page
 GET     /                                       Application.index
 GET		/articles.html							Application.articles
-GET		/registration.html						Application.signupform										
+GET		/registration.html						Application.signupform	
+GET		/tutorials.html							TutorialContoller.show									
 
 
 # Ignore favicon requests
