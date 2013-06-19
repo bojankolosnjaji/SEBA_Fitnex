@@ -1,21 +1,14 @@
 package models;
 
-import java.util.Random;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
 
 @Entity
-public class Address extends GenericModel{
+public class Address extends Model{
 	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	public Long id;
 	 
 	public String street;
 	public String number;

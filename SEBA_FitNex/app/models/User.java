@@ -5,15 +5,20 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import play.data.validation.Unique;
-import play.db.jpa.Model;
+import play.db.jpa.GenericModel;
  
 @Entity
-public class User extends Model {
+public class User extends GenericModel {
+	@Id @GeneratedValue (strategy = GenerationType.SEQUENCE) 
+	public Long id;
 	
 	@Unique
     public String email;
@@ -69,7 +74,10 @@ public class User extends Model {
 		this.BMIHistoryList= new ArrayList<BMIHistory>();
 		this.address = address;
 		this.phone = phone;
-		this.mobile = mobile;
+		this.mobile = mobile;	
+		
+		System.out.println(email  + "" + password + " " + firstName + " " + lastName + "" + dateOfBirth + " " + gender + " "  + weight + joinDate);
+		
 	}
 	
 }

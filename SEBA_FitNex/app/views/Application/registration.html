@@ -64,22 +64,22 @@ form td.right {
 		<div id="mainContentDiv">
 			<h2>FitNex is Free!</h2>
 			<h3>Join us now.</h3>
-			<form name="frmRegister" id="frmRegister" method="post" action="@{Application.signupform()}" >
+			<form name="frmRegister" id="frmRegister" action="@{Application.signupform()}" method="post" >
 				<table>
 					<tbody>
 						<tr>
 							<td class="right">First Name</td>
-							<td><input type="text" name="txtFirstname" id="txtFirstname" />
+							<td><input type="text" name="txtFirstName" id="txtFirstname" />
 							</td>
 						</tr>
 						<tr>
 							<td class="right">Last Name</td>
-							<td><input type="text" name="txtLastname" id="txtLastName" />
+							<td><input type="text" name="txtLastName" id="txtLastName" />
 							</td>
 						</tr>
 						<tr>
 							<td class="right">Username (e-mail)</td>
-							<td><input type="text" name="txtUsername" id="txtUsername" />
+							<td><input type="text" name="txtEmail" id="txtEmail" />
 							</td>
 						</tr>
 						<tr>
@@ -89,7 +89,7 @@ form td.right {
 						</tr>
 						<tr>
 							<td class="right">Retype Password</td>
-							<td><input type="password" name="txtPassword"
+							<td><input type="password" name="txtRetPassword"
 								id="txtPassword" /></td>
 						</tr>						
 						<tr>
@@ -98,17 +98,22 @@ form td.right {
 								maxlength="10" /></td>
 						</tr>
 						<tr>
+							<td class="right">Weight: (kg)</td>
+							<td><input type="text" name="txtWeight" id="txtWeight"
+								maxlength="10" /></td>
+						</tr>
+						<tr>
 							<td class="right">Gender</td>
 							<td><input type="radio" name="rdGender" id="rdGender"
 								value="male" />Male       <input type="radio" name="rdGender"
 								id="rdGender" value="female" />Female</td>
 						</tr>
-						<tr>
+						<!--  <tr>
 							<td class="right">Exercise Preference</td>
 							<td><select name="selPref" id="selPref">
 									<option></option>
 							</select></td>
-						</tr>
+						</tr> -->
 						<tr>
 						<td class="right">Street:</td>
 						<td><input type="text" name="txtStreet" value="" size="25"
@@ -146,12 +151,12 @@ form td.right {
 						</tr>
 						<tr>
 							<td colspan="2" style="padding-left: 10em;"><input
-								type="checkbox" name="chkAgree" id="chkAgree" /> I agree to the
+								type="checkbox" name="chkAgree" id="chkAgree" value="checked" /> I agree to the
 								<a href="#">Terms and Conditions</a>.</td>
 						</tr>
 						<tr>
 							<td colspan="2" style="padding-left: 10em;"><input
-								type="submit" name="btnSubmit" id="btnSubmit" value="Register" />      
+								type="submit" name="btnSubmit" id="btnSubmit" value="submit" />      
 								<input type="reset" value="reset" name="btnReset" id="btnReset" />
 							</td>
 						</tr>

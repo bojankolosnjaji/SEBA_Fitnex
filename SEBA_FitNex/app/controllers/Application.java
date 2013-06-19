@@ -32,19 +32,21 @@ public class Application extends Controller {
     	renderTemplate("Application/registration.html");
     }
    
-    public static void signupform(String txtEmail, String txtPassword, String txtFirstName, String txtLastName, String txtDateOfBirth, String txtWeight, String rdGender, String txtStreet, String txtNumber, String txtCity, String txtProvince, String txtCountry, String txtPhoneNumber, String txtMobile, String selPref, String chkAgree){
+    public static void signupform(String txtFirstName, String txtLastName, String txtEmail, String txtPassword, String txtRepPassword, String txtDOB, String txtWeight, String rdGender, String txtStreet, String txtNumber, String txtCity, String txtProvince, String txtCountry, String txtPhoneNumber, String txtMobile, String chkAgree){
     	Address address = new Address(txtStreet, txtNumber, txtCity, txtProvince, txtCountry);
     	
     	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date dateStr;
 		try {
-			dateStr = formatter.parse(txtDateOfBirth);
+			dateStr = formatter.parse(txtDOB);
 			
 			Gender engender;
 			if (rdGender.equals("male"))
 				engender = Gender.MALE;
 			else
 				engender = Gender.FEMALE;
+			System.out.println("First name: " + txtFirstName);
+
 			User user = new User(txtEmail, txtPassword, txtFirstName, txtLastName, dateStr, engender, Double.parseDouble(txtWeight), address, txtPhoneNumber, txtMobile);
 			System.out.println("E-mail: " + user.email);
 			address.save();
@@ -57,18 +59,18 @@ public class Application extends Controller {
     	index(null);
     }
     
-    public static void signinform(String email, String password){
-    	System.out.println("Sign in form" + email);
+    public static void signinform(String txtUsername, String txtPassword){
+    	System.out.println("Sign in form" + txtUsername);
     	
-    	User signedUser = User.findById(email);
+    	User signedUser = (User) User.find("email = ?", txtUsername).first();
     	System.out.println("Name:" + signedUser.firstName + " " + signedUser.lastName);
-    	renderTemplate("Application/index.html", signedUser);       	
+    	renderTemplate("Application/home.html", signedUser);       	
     	
     }
     
     public static void signout(String email)
     {
-    	renderTemplate("Application/index.html");
+    	renderTemplate("Application/home.html");
     }
     
     
