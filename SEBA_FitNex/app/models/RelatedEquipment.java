@@ -15,7 +15,7 @@ public class RelatedEquipment extends Model{
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)	
-	public Excercise excercise;
+	public Exercise excercise;
 	
     public String name;
 	public String image;

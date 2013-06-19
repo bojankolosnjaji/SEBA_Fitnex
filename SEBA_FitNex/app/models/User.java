@@ -26,16 +26,16 @@ public class User extends Model {
     public Date joinDate;
     
     @OneToMany(mappedBy="user")
-    public List<ArticleComment> comments;
+    public List<ArticleComment> articleComments;
     
     @OneToMany(mappedBy="user")
-    public List<TutorialComment> comments;
+    public List<TutorialComment> tutorialComments;
     
     @OneToMany(mappedBy="user")
-    public List<ExcerciseComment> comments;
+    public List<ExerciseComment> exerciseComments;
     
     @OneToMany(mappedBy="excercise")
-    public List<UserPreference> userExcercisePreferences;
+    public List<UserExercisePreference> userExcercisePreferences;
     
     @OneToMany(mappedBy="user")
     public List<BMIHistory> BMIHistoryList;
@@ -60,7 +60,10 @@ public class User extends Model {
 		this.gender = gender;
 		this.weight = weight;
 		this.joinDate = new Date();
-		this.comments = new ArrayList<ArticleComment>();
+		this.articleComments = new ArrayList<ArticleComment>();
+		this.tutorialComments = new ArrayList<TutorialComment>();
+		this.exerciseComments = new ArrayList<ExerciseComment>();
+		this.userExcercisePreferences = new ArrayList<UserExercisePreference>();
 		this.BMIHistoryList= new ArrayList<BMIHistory>();
 		this.address = address;
 		this.phone = phone;
