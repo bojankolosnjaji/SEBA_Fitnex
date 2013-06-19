@@ -11,22 +11,23 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 
 @Entity
-public class ArticleComment extends Model{
+public class ExcerciseComment extends Model{
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)	
-	public Article article;
+	public Excercise excercise;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	public User user;
 	
 	@ManyToOne
-    public ArticleComment parent;
+    public ExcerciseComment parent;
     @OneToMany(mappedBy="parent")
-    private List<ArticleComment> children;
+    private List<ExcerciseComment> children;
 	
+    
     public String title;
 	public String content;
-	public Date date;
+	public Date date;	
 
 }

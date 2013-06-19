@@ -11,22 +11,15 @@ import javax.persistence.OneToMany;
 import play.db.jpa.Model;
 
 @Entity
-public class ArticleComment extends Model{
+public class Step extends Model{
 	
 	
 	@ManyToOne(fetch=FetchType.LAZY)	
-	public Article article;
+	public Tutorial tutorial;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	public User user;
-	
-	@ManyToOne
-    public ArticleComment parent;
-    @OneToMany(mappedBy="parent")
-    private List<ArticleComment> children;
-	
-    public String title;
+	public int stepOrder;
+	public String title;
 	public String content;
-	public Date date;
+	public String image;
 
 }

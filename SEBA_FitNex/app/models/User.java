@@ -29,6 +29,15 @@ public class User extends Model {
     public List<ArticleComment> comments;
     
     @OneToMany(mappedBy="user")
+    public List<TutorialComment> comments;
+    
+    @OneToMany(mappedBy="user")
+    public List<ExcerciseComment> comments;
+    
+    @OneToMany(mappedBy="excercise")
+    public List<UserPreference> userExcercisePreferences;
+    
+    @OneToMany(mappedBy="user")
     public List<BMIHistory> BMIHistoryList;
     
     @OneToOne
