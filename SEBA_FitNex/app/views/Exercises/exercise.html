@@ -1,0 +1,103 @@
+#{extends 'fitness-template.html' /}
+#{set title:'Exercises' /}
+#{set moreStyles:"
+ #mainContentDiv{
+        padding: 1px;
+      }
+
+      #exerciseDescDiv{
+        height: 60%;
+        border: 1px solid #f00;
+      }
+
+	#exerciseDescDiv h3{
+	margin-top: 1px;
+	text-align: center;
+	font-weight: bold;
+	height: 3%;
+	padding: 0px;
+	}
+
+	#exerciseDescDiv p{
+	max-height: 87%;
+	padding: 0.5em;
+	font-size: 0.8em;
+	line-height: 1.1em;
+	overflow: auto;
+	text-indent: 2.5px;
+	text-align: justify;
+	}
+	
+      #equipmentDiv{
+        height: 30%;
+        border: 1px solid #0f0;
+        padding: 4px;
+      }
+
+      #equipmentDiv img{
+	border: solid 1px #000;
+	float: left;
+	height: 100%;
+	width: 32%;
+	}
+      	
+" /}
+
+    <div id="leftDiv">
+      <div id="logoDiv"> <img src="@{'/public/images/logo.png'}" style="height:100%;width:100%;"></img> </div>
+      <div id="leftNavDiv">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about_us.html">About Us</a></li>
+          <li><a href="/Articles/articles.html">Articles</a></li>
+          <li><a href="/Tutorials/tutorials.html">Tutorials</a></li>
+          <li><a href="/Exercises/exercises.html" class="current">Exercises</a></li>
+          <ul id="exerciseLevels">
+            <li><a href="/Exercises/exercises_beginner.html">Beginner</a></li>
+            <li><a href="/Exercises/exercises_intermediate.html">Intermediate</a></li>
+            <li><a href="/Exercises/exercises_expert.html">Expert</a></li>
+          </ul>
+          <li><a href="/bmi_calculator.html">BMI Calculator</a></li>
+          <li><a href="/equipments_for_you.html">Equipments for you!</a></li>
+          <li><a href="/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="centreDiv">
+      <div id="inspireQuotesDiv"> <img src="@{'/public/images/banner_exercises.png'}" style="height:100%;width:100%;"></img></div>
+      <div id="breadCrumbsDiv"><a href="/">Home</a> &gt; <a href="/Exercises/exercises.html">Exercises</a></div>
+<br />      
+<div id="mainContentDiv">
+        <div id="exerciseDescDiv">
+	<h3>Exercise Title</h3>
+	<p>Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.Description of exercise.
+	</p>
+	</div>
+        <hr />
+        <div id="equipmentDiv">
+	<a href="#"><img src="@{'/public/images/banner_exercises.png'}" /></a>
+	<a href="#"><img src="@{'/public/images/banner_exercises.png'}" style="margin-left: 1%;" /></a>
+	<a href="#"><img src="@{'/public/images/banner_exercises.png'}" style="margin-left: 1%;" /></a>
+	<br clear="all" />
+	</div>
+      </div>
+    </div>
+    <div id="rightDiv">
+      <div id="loginBMIDiv"> <span id="welcome">Welcome User</span>
+        <h5>Recent BMI Report</h5>
+        <span id="age">Age: </span> <span id="weight">Weight: </span> <span
+          id="height">Height: </span> <span id="bmi">BMI: </span> </div>
+      <div id="workoutDiv">Workout Woman</div>
+      <div id="searchDiv">
+        <form action="submit" id="frmSearch" name="frmSearch" method="post">
+          Search     <input type="text" name="txtSearch" id="txtSearch" /> </form>
+      </div>
+      <div id="advertDiv1" class="advertDiv"></div>
+      <div id="advertDiv2" class="advertDiv"></div>
+      <div id="advertDiv3" class="advertDiv"></div>
+    </div>
+    <div id="clearDiv"></div>
+    <br />
+    <div id="footerDiv"> Copyright 2013</div>
+  </body>
+</html>

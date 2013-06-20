@@ -44,10 +44,10 @@ height: 25%;
 
 } 
 
-
 #leftNavDiv ul{ 
 list-style-type:none;
 padding-left: 0px; 
+margin-top: 0px;
 } 
 
 #leftNavDiv ul li{ 
@@ -145,7 +145,7 @@ color:white;
 #mainContentDiv{ height: 70%; 
 background-color: white; 
 color: #000;
-
+margin-top: -4%;
 
 
 background-image: linear-gradient(bottom, rgb(255,255,255) 0%, rgb(240,240,240) 53%);
@@ -289,17 +289,10 @@ background-color: #ddd; }
 
 /** ------------------------ **/
 
-/** clearing div **/
-#clearDiv{
-clear:both;
-}
-
 /** ------------------------ **/ 
 
 /** footer **/ 
 #footerDiv{
-margin-top: 3px;
-height: 20px;
 font-size: 0.75em;
 text-align: center;
 color: #fff;

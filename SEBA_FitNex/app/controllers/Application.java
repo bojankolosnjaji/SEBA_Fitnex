@@ -16,12 +16,12 @@ public class Application extends Controller {
     	if (signedUser==null || signedUser.email==null)
     	{
     		System.out.println("No user");
-    		renderTemplate("Application/home.html");
+    		renderTemplate("Application/index.html");
     	}
     	else
     	{
     		System.out.println("User signed in");
-    		renderTemplate("Application/home.html", signedUser); 
+    		renderTemplate("Application/index.html", signedUser); 
     	}
     	
     	
@@ -62,18 +62,42 @@ public class Application extends Controller {
     public static void signinform(String txtUsername, String txtPassword){
     	System.out.println("Sign in form" + txtUsername);
     	
-    	User signedUser = (User) User.find("email = ?", txtUsername).first();
-    	System.out.println("Name:" + signedUser.firstName + " " + signedUser.lastName);
-    	renderTemplate("Application/home.html", signedUser);       	
+    	User signedUser = (User) User.find("email = ? AND password = ?", txtUsername, txtPassword).first();
+    	if (signedUser!=null)
+    	{
+    		System.out.println("Name:" + signedUser.firstName + " " + signedUser.lastName); 
+    		renderTemplate("Application/index.html", signedUser);   		
+    	}
+    	else
+    	{
+    		renderTemplate("Application/index.html");
+    	}
     	
     }
     
     public static void signout(String email)
     {
-    	renderTemplate("Application/home.html");
+    	renderTemplate("Application/index.html");
     }
     
-    
+    public static void bmi_calculator() {
+        render();
+    }
 
+    public static void bmi_history() {
+        render();
+    }
+
+    public static void about_us() {
+        render();
+    }
+
+    public static void equipments_for_you() {
+        render();
+    }
+
+    public static void contact() {
+        render();
+    }
 
 }
