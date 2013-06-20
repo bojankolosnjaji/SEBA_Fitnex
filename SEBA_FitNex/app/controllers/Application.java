@@ -21,7 +21,7 @@ public class Application extends Controller {
     	else
     	{
     		System.out.println("User signed in");
-    		renderTemplate("Application/home.html", signedUser);
+    		renderTemplate("Application/home.html", signedUser); 
     	}
     	
     	
