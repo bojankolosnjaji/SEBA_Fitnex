@@ -1,3 +1,3 @@
 package models;
 
-public enum ArticleLevel {BEGINNER, EXPERT}
+public enum ArticleLevel {BEGINNER, INTERMEDIATE, EXPERT}

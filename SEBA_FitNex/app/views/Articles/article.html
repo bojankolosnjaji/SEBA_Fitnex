@@ -73,24 +73,13 @@
     <div id="centreDiv">
       <div id="inspireQuotesDiv" "> <img src="@{'/public/images/banner_articles.png'}" style="height:100%;width:100%;"></img></div>
       <div id="breadCrumbsDiv"><a href="/">Home</a> &gt; <a href="/Articles/articles.html">Articles</a>
-        &gt; How To Lose Weight in 2 Weeks </div>
+        &gt; ${article.title} </div>
       <div id="mainContentDiv">
         <div id="mainContentDiv" >
-        <h3>How To Lose Weight in 2 Weeks</h3>
-        <div id="textContentDiv"> Lorem Epsum <br />
-          Lorem Epsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
-          lorem spsum <br />
+        <h3>${article.title}</h3>
+        <div id="textContentDiv"> ${article.content}
           <hr />
-          <form method="post" id="formComment" name="frmComment">
+          <form method="post" id="formComment" name="frmComment" action="@{ArticleComments.addComment(article.id)}">
             <fieldset> <legend>Add a Comment</legend>
               <table>
                 <tbody>
@@ -107,7 +96,13 @@
             </fieldset>
           </form>
           <h4>Comments</h4>
-          <h4>Recent Articles</h4>
+          #{list article.comments, as:'comment'}
+    		<li>${comment.user.firstName} ${comment.user.lastName}: ${comment.content}</li>
+		  #{/list}
+			#{else}
+    		No comments for now
+			#{/else}
+          <h4>Related Articles:</h4>
         </div>
       </div>
       </div>

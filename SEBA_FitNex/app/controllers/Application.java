@@ -65,6 +65,7 @@ public class Application extends Controller {
     	User signedUser = (User) User.find("email = ? AND password = ?", txtUsername, txtPassword).first();
     	if (signedUser!=null)
     	{
+    		Security.session.put("user", signedUser.email);
     		System.out.println("Name:" + signedUser.firstName + " " + signedUser.lastName); 
     		renderTemplate("Application/index.html", signedUser);   		
     	}

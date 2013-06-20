@@ -8,7 +8,7 @@ GET     /                                       Application.index
 GET     /                                       Application.index
 GET     /registration.html                      Application.signup
 GET     /bmi_calculator.html                    Application.bmi_calculator
-GET     /bmi_history.html                    Application.bmi_history
+GET     /bmi_history.html                    BMIHistoryController.bmihistory
 GET     /about_us.html                    	Application.about_us
 GET     /equipments_for_you.html                Application.equipments_for_you
 GET     /contact.html                    	Application.contact

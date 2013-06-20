@@ -2,6 +2,17 @@
 
 <html>
     <head>
+    <script type="text/javascript">
+	function calculateBMI()
+	{
+		//alert("hi");
+		weight = document.getElementById("txtWeight").innerHTML;
+		height = document.getElementById("txtHeight").innerHTML;
+		bmi =  weight/(height*height);
+		alert("hi " + weight);
+		document.getElementById("txtBMI").innerHTML = bmi;
+	}
+	</script>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
 	<style type="text/css">	   

@@ -28,5 +28,20 @@ public class ArticleComment extends Model{
     public String title;
 	public String content;
 	public Date date;
+	
+	public ArticleComment(Article article, User user, ArticleComment parent,
+			List<ArticleComment> children, String title, String content,
+			Date date) {
+		super();
+		this.article = article;
+		this.user = user;
+		this.parent = parent;
+		this.children = children;
+		this.title = title;
+		this.content = content;
+		this.date = date;
+	}
+	
+	
 
 }

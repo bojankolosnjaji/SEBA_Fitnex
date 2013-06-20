@@ -80,7 +80,7 @@
           Calculator</a></div>
       <div id="mainContentDiv">
         <h3>BMI Calculator</h3>
-        <form>
+        <form action="JavaScript:calculateBMI()">
           <ul>
             <li><label for="txtAge">Age</label>          <input type="text" id="txtAge"
                 name="txtAge" />    <span>years</span></li>
@@ -89,6 +89,8 @@
             <li><label for="txtHeight">Height</label>      <input type="text" id="txtHeight"
                 name="txtHeight" />    <span>cm</span></li>
           </ul>
+          
+          <button type="submit">Submit</button>
         </form>
         <hr />
         <div id="interpreteDiv">

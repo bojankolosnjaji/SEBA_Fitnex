@@ -35,6 +35,19 @@ public class Article extends Model{
     
     @OneToMany(mappedBy="article")
     public List<ArticleComment> comments;
+
+	public Article(String title, String content, String image, Date date,
+			ArticleCategory category, ArticleLevel level) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.image = image;
+		this.date = date;
+		this.category = category;
+		this.level = level;		 
+	}
+    
+    
 	
 	
 }

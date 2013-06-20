@@ -1,32 +1,51 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import java.util.Date;
+import java.util.List;
 
-import java.util.*;
-
-import models.*;
+import models.Article;
+import models.ArticleCategory;
+import models.ArticleComment;
+import models.ArticleLevel;
+import play.mvc.Controller;
 
 public class Articles extends Controller {
 
-    public static void article() {
-        render();
+    public static void loadArticle(long id) {
+    	Article article = Article.findById(id);
+        renderTemplate("Articles/article.html", article);
     }
 
     public static void articles() {
-        render();
+    	List<Article> articleList= models.Article.find("order by date desc").fetch();
+    	if (articleList==null || articleList.isEmpty())
+    	{
+        	Article article1 = new models.Article("Article1", "Content1", null, new Date(), ArticleCategory.MUSCLE, ArticleLevel.BEGINNER);
+        	article1.save();
+        	new models.Article("Article2", "Content2", null, new Date(), ArticleCategory.NUTRITION, ArticleLevel.EXPERT).save();
+        	new models.Article("Article3", "Content3", null, new Date(), ArticleCategory.RESEARCH, ArticleLevel.BEGINNER).save();
+        	new models.Article("Article4", "Content4", null, new Date(), ArticleCategory.RESEARCH, ArticleLevel.BEGINNER).save();
+        	articleList= models.Article.find("order by date desc").fetch();
+        	System.out.println(articleList.size() + " Articles inserted");
+    	}
+    	System.out.println("Articles fetched");
+        render(articleList);
     }
 
     public static void articles_beginner() {
-        render();
+    	List<Article> articleList= models.Article.find("level=? order by date desc", ArticleLevel.BEGINNER).fetch();
+    	render(articleList);
+        
     }
 
     public static void articles_intermediate() {
-        render();
+    	List<Article> articleList= models.Article.find("level=? order by date desc", ArticleLevel.INTERMEDIATE).fetch();
+    	render(articleList);
     }
 
     public static void articles_expert() {
-        render();
+    	List<Article> articleList= models.Article.find("level=? order by date desc", ArticleLevel.EXPERT).fetch();
+    	render(articleList);
     }
 
 }

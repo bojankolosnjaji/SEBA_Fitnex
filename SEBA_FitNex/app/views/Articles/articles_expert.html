@@ -70,9 +70,12 @@
       <div id="mainContentDiv">
         <h4>Expert Articles</h4>
         <ul>
-          <li>Article 1</li>
-          <li>Article 2</li>
-          <li>Article 3</li>
+          #{list articleList, as:'article'}
+    			<li><a href = "@{Articles.loadArticle(article.id)}">${article.title}</a></li>
+		  #{/list}       
+		  #{else}
+			No articles for mow
+			#{/else}   
         </ul>
         <br />
         <br />
