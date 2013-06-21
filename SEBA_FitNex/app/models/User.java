@@ -85,7 +85,7 @@ public class User extends GenericModel {
 	
 	public String convertToString()
 	{
-		return email+";"+firstName+";"+lastName+";"+weight;
+		return id+";"+email+";"+firstName+";"+lastName+";"+weight;
 	}
 	
 	public static User convertToUser(String format)
@@ -95,12 +95,13 @@ public class User extends GenericModel {
 		if (format != null) {
 			String[] str = format.split(";");
 			
-			if (str.length == 4) {
+			if (str.length == 5) {
 				user = new User();
-				user.email = str[0];
-				user.firstName = str[1];
-				user.lastName = str[2];
-				user.weight = Double.valueOf(str[3]);
+				user.id = Long.valueOf(str[0]);
+				user.email = str[1];
+				user.firstName = str[2];
+				user.lastName = str[3];
+				user.weight = Double.valueOf(str[4]);
 
 			}
 		}

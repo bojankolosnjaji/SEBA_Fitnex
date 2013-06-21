@@ -79,6 +79,8 @@ public class Application extends Controller {
 			e.printStackTrace();
 		} 
 		
+		LogMaker.log("UserActivity", user, "has just registred");
+		
 		//Cache.set(session.getId() + "-user", user, "30mn");
 		Security.session.put("user", user.convertToString());
     	index(user);
@@ -93,10 +95,14 @@ public class Application extends Controller {
     		//Security.session.put("user", signedUser.email);
     		Security.session.put("user", signedUser.convertToString());
     		System.out.println("Name:" + signedUser.firstName + " " + signedUser.lastName); 
+    		
+    		LogMaker.log("UserActivity", signedUser, "has just signed in");
+    		
     		renderTemplate("Application/index.html", signedUser);   		
     	}
     	else
     	{
+    		LogMaker.log("UserActivity", null, "failed sign in");
     		Boolean wrongCred=true;
     		renderTemplate("Application/index.html",wrongCred);
     	}
@@ -105,11 +111,14 @@ public class Application extends Controller {
     
     public static void signout(String email)
     {
+		User signedUser=User.convertToUser(Security.session.get("user"));
+    	LogMaker.log("UserActivity", signedUser, "has signed  out");
     	Security.session.put("user", null);
     	try {
 			//Secure.logout();
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
+			LogMaker.log("UserActivity", signedUser, "failed signed out");
 			e.printStackTrace();
 		}
     	renderTemplate("Application/index.html");
