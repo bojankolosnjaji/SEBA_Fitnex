@@ -71,10 +71,12 @@
       <div id="mainContentDiv">
         <h4>Recent Tutorials</h4>
         <ul>
-          <li><a href="/Tutorials/tutorial.html">How
-              to lose weight in 2 weeks</a>.</li>
-          <li>Tutorial 2</li>
-          <li>Tutorial 3</li>
+        	#{list tutorialList, as:'tutorial'}
+    			<li><a href = "@{Tutorials.loadTutorial(tutorial.id)}">${tutorial.title}</a></li>
+			#{/list}     
+			#{else}
+			No tutorials for now
+			#{/else}     
         </ul>
         <form method="post" id="frmSearch" name="frmSearch">
           <fieldset> <legend>Search for Tutorials</legend>

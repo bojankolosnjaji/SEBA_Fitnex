@@ -14,7 +14,8 @@ public class Articles extends Controller {
 
     public static void loadArticle(long id) {
     	Article article = Article.findById(id);
-        renderTemplate("Articles/article.html", article);
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+        renderTemplate("Articles/article.html", article,signedUser);
     }
 
     public static void articles() {

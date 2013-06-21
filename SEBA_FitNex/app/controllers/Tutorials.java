@@ -11,23 +11,22 @@ public class Tutorials extends Controller {
 
 	public static void loadTutorial(long id) {
 		Tutorial tutorial = Tutorial.findById(id);
-        renderTemplate("Tutorials/tutorial.html", tutorial);
+		User signedUser=User.convertToUser(Security.session.get("user"));
+        renderTemplate("Tutorials/tutorial.html", tutorial,signedUser);
     }
 
     public static void tutorials() {
     	List<Tutorial> tutorialList= models.Tutorial.find("order by date desc").fetch();
+    	
     	if (tutorialList==null || tutorialList.isEmpty())
     	{
-    		models.Step step1=new models.Step(1,"Tutorial1", "Step1Content",null).save();
-    		models.Step step2=new models.Step(2,"Tutorial1", "Step2Content",null).save();
-    		models.Step step3=new models.Step(3,"Tutorial1", "Step3Content",null).save();
+        	
     		
-    		List<Step> steps=new ArrayList<Step>();
-    		steps.add(step1);
-    		steps.add(step2);
-    		steps.add(step3);
-    		
-    		new models.Tutorial("Tutorial1", "Content1", null, new Date(), TutorialCategory.MUSCLE, TutorialLevel.BEGINNER, steps).save();
+    		Tutorial tutorial=new models.Tutorial("Tutorial5", "Content5", null, new Date(), TutorialCategory.MUSCLE, TutorialLevel.BEGINNER).save();
+    		new Step(tutorial,1,"Tutorial5", "Step1Content",null).save();
+        	new Step(tutorial,2,"Tutorial5", "Step2Content",null).save();
+        	new Step(tutorial,3,"Tutorial5", "Step3Content",null).save();
+    		new models.Tutorial("Tutorial1", "Content1", null, new Date(), TutorialCategory.MUSCLE, TutorialLevel.BEGINNER).save();
         	new models.Tutorial("Tutorial2", "Content2", null, new Date(), TutorialCategory.NUTRITION, TutorialLevel.EXPERT).save();
         	new models.Tutorial("Tutorial3", "Content3", null, new Date(), TutorialCategory.RESEARCH, TutorialLevel.BEGINNER).save();
         	new models.Tutorial("Tutorial4", "Content4", null, new Date(), TutorialCategory.RESEARCH, TutorialLevel.BEGINNER).save();

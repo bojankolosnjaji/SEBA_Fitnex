@@ -24,8 +24,9 @@ public class Step extends Model{
 	public String content;
 	public String image;
 	
-	public Step(int stepOrder,String title, String content, String image) {
+	public Step(Tutorial tutorial, int stepOrder,String title, String content, String image) {
 		super();
+		this.tutorial = tutorial;
 		this.stepOrder = stepOrder;
 		this.title = title;
 		this.content = content;

@@ -69,9 +69,12 @@
       <div id="mainContentDiv">
         <h4>Recent Exercises</h4>
         <ul>
-          <li>Exercise 1</li>
-          <li>Exercise 2</li>
-          <li>Exercise 3</li>
+        	#{list exerciseList, as:'exercise'}
+    			<li><a href = "@{Exercises.loadExercise(exercise.id)}">${exercise.title}</a></li>
+			#{/list}     
+			#{else}
+			No exercises for now
+			#{/else}     
         </ul>
         <form method="post" id="frmSearch" name="frmSearch">
           <fieldset> <legend>Search for Exercises</legend>

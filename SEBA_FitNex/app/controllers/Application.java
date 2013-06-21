@@ -106,6 +106,12 @@ public class Application extends Controller {
     public static void signout(String email)
     {
     	Security.session.put("user", null);
+    	try {
+			//Secure.logout();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	renderTemplate("Application/index.html");
     }
     

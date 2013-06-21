@@ -32,6 +32,16 @@ public class Exercise extends Model{
     @OneToMany(mappedBy="exercise")
     public List<UserExercisePreference> userPreferences;
     
-	
+    public Exercise(String title, String content, String image, Date date,
+    		ExerciseCategory category, ExerciseLevel level) {
+		super();
+		this.title = title;
+		this.content = content;
+		this.image = image;
+		this.date = date;
+		this.category = category;
+		this.level = level;
+		
+	}
 	
 }

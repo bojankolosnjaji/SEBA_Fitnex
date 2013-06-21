@@ -28,6 +28,19 @@ public class TutorialComment extends Model{
     
     public String title;
 	public String content;
-	public Date date;	
+	public Date date;
+	
+	public TutorialComment(Tutorial tutorial, User user, TutorialComment parent,
+			List<TutorialComment> children, String title, String content,
+			Date date) {
+		super();
+		this.tutorial = tutorial;
+		this.user = user;
+		this.parent = parent;
+		this.children = children;
+		this.title = title;
+		this.content = content;
+		this.date = date;
+	}
 
 }

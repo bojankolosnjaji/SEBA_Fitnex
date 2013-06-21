@@ -1,3 +1,3 @@
 package models;
 
-public enum ExerciseLevel {BEGINNER, EXPERT}
+public enum ExerciseLevel {BEGINNER,INTERMEDIATE, EXPERT}

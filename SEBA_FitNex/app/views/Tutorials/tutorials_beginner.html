@@ -71,9 +71,12 @@
       <div id="mainContentDiv">
         <h4>Beginner Tutorials</h4>
         <ul>
-          <li>Tutorial 1</li>
-          <li>Tutorial 2</li>
-          <li>Tutorial 3</li>
+        	#{list tutorialList, as:'tutorial'}
+    			<li><a href = "@{Tutorials.loadTutorial(tutorial.id)}">${tutorial.title}</a></li>
+			#{/list}     
+			#{else}
+			No tutorials for now
+			#{/else}     
         </ul>
         <br />
         <br />

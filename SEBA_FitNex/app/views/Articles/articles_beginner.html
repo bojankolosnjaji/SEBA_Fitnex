@@ -68,13 +68,13 @@
       <div id="breadCrumbsDiv"><a href="/">Home</a> &gt; <a href="/Articles/articles.html">Articles</a>
         &gt; <a href="/Articles/articles_beginner.html">Beginner</a> </div>
       <div id="mainContentDiv">
-        <h4>Recent Articles</h4>
+        <h4>Beginner Articles</h4>
         <ul>
          #{list articleList, as:'article'}
     			<li><a href = "@{Articles.loadArticle(article.id)}">${article.title}</a></li>
 		 #{/list}      
 		 #{else}
-			No articles for mow
+			No articles for now
 			#{/else}    
         </ul>
         <br />
