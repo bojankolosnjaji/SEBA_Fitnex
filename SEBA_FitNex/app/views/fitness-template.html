@@ -24,6 +24,55 @@
         #{get 'moreScripts' /}
     </head>
     <body>
-        #{doLayout /}
+    #{doLayout /}
+    
+    <div id="rightDiv">
+      #{if !signedUser}    
+       <div id="loginBMIDiv">	 
+      			
+        <form method="post" name="frmLogin" id="frmLogin" action="@{Application.signinform()}">
+          <fieldset> <legend>Login</legend> <span>Username</span> 
+           <input type="text"
+              id="txtUsername" name="txtUsername" /> <br />
+            <span>Password</span>
+            <input type="password" id="txtPassword" name="txtPassword" /><br />
+            <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" /><br />
+            #{if wrongCred}
+      			<span style="color: red; font-size: 0.75em" >
+      				Wrong Username or Password!
+      			</span>
+      			#{/if}
+            <span>Don't have an account? <br />
+              <a href="@{Application.signup()}">Join now for free.</a></span> </fieldset>
+        </form>
+        </div>
+         #{/if}
+         #{else}
+        <div id="loginBMIDiv"> <span id="welcome">Welcome, ${signedUser.firstName}</span>
+        <h5>Recent BMI Report</h5>
+<!--         <span id="age">Age: </span> 
+			
+        <span id="height">Height: </span> <span id="bmi">BMI: </span> -->
+        
+        <span id="weight">Full Name: ${signedUser.firstName} ${signedUser.lastName}</span>
+        <span id="weight">Weight: ${signedUser.weight}</span>
+           
+          <a href="@{Application.signout()}">Sign out</a>
+          </div>
+    	 
+		#{/else}
+		<div id="workoutDiv"> Workout Woman</div>
+      <div id="searchDiv">
+        <form method="post" name="frmSearch" id="frmSearch" action="submit">
+          Search <input type="text" id="txtSearch" name="txtSearch" /> </form>
+      </div>
+      <div class="advertDiv" id="advertDiv1"></div>
+      <div class="advertDiv" id="advertDiv2"></div>
+      <div class="advertDiv" id="advertDiv3"></div>
+    </div>
+    <div id="clearDiv"></div>
+    <br />
+    <div id="footerDiv"> Copyright 2013</div>
+        
     </body>
 </html>

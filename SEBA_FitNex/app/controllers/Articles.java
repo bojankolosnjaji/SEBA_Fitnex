@@ -7,6 +7,7 @@ import models.Article;
 import models.ArticleCategory;
 import models.ArticleComment;
 import models.ArticleLevel;
+import models.User;
 import play.mvc.Controller;
 
 public class Articles extends Controller {
@@ -29,23 +30,27 @@ public class Articles extends Controller {
         	System.out.println(articleList.size() + " Articles inserted");
     	}
     	System.out.println("Articles fetched");
-        render(articleList);
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+    	render(articleList,signedUser);
     }
 
     public static void articles_beginner() {
     	List<Article> articleList= models.Article.find("level=? order by date desc", ArticleLevel.BEGINNER).fetch();
-    	render(articleList);
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+    	render(articleList,signedUser);
         
     }
 
     public static void articles_intermediate() {
     	List<Article> articleList= models.Article.find("level=? order by date desc", ArticleLevel.INTERMEDIATE).fetch();
-    	render(articleList);
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+    	render(articleList,signedUser);
     }
 
     public static void articles_expert() {
     	List<Article> articleList= models.Article.find("level=? order by date desc", ArticleLevel.EXPERT).fetch();
-    	render(articleList);
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+    	render(articleList,signedUser);
     }
 
 }

@@ -1,5 +1,7 @@
 package models;
  
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,6 +31,7 @@ public class User extends GenericModel {
     public Date dateOfBirth;
     public Gender gender;
     public double weight;
+    public double height;
     public Date joinDate;
     
     @OneToMany(mappedBy="user")
@@ -80,4 +83,28 @@ public class User extends GenericModel {
 		
 	}
 	
+	public String convertToString()
+	{
+		return email+";"+firstName+";"+lastName+";"+weight;
+	}
+	
+	public static User convertToUser(String format)
+	{
+		User user = null;
+		
+		if (format != null) {
+			String[] str = format.split(";");
+			
+			if (str.length == 4) {
+				user = new User();
+				user.email = str[0];
+				user.firstName = str[1];
+				user.lastName = str[2];
+				user.weight = Double.valueOf(str[3]);
+
+			}
+		}
+		
+		return user;
+	}
 }

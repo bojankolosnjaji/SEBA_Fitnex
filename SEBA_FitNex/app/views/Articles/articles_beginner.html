@@ -81,41 +81,41 @@
         <br />
       </div>
     </div>
-    <div id="rightDiv">
-      #{if !signedUser}    
-       <div id="loginBMIDiv">	 
+<!--     <div id="rightDiv"> -->
+<!--       #{if !signedUser}     -->
+<!--        <div id="loginBMIDiv">	  -->
       
-        <form method="post" name="frmLogin" id="frmLogin" action="@{Application.signinform()}">
-          <fieldset> <legend>Login</legend> <span>Username</span>    <input type="text"
-              id="txtUsername" name="txtUsername" /> <br />
-            <span>Password</span>     <input type="password" id="txtPassword" name="txtPassword" /><br />
-            <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" /><br />
-            <span>Don't have an account? <br />
-              <a href="@{Application.signup()}">Join now for free.</a></span> </fieldset>
-        </form>
-        </div>
-         #{/if}
-         #{else}
-        <div id="loginBMIDiv"> <span id="welcome">Welcome, ${signedUser.firstName}</span>
-        <h5>Recent BMI Report</h5>
-        <span id="age">Age: </span> <span id="weight">Weight: </span> <span
-          id="height">Height: </span> <span id="bmi">BMI: </span>
+<!--         <form method="post" name="frmLogin" id="frmLogin" action="@{Application.signinform()}"> -->
+<!--           <fieldset> <legend>Login</legend> <span>Username</span>    <input type="text" -->
+<!--               id="txtUsername" name="txtUsername" /> <br /> -->
+<!--             <span>Password</span>     <input type="password" id="txtPassword" name="txtPassword" /><br /> -->
+<!--             <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" /><br /> -->
+<!--             <span>Don't have an account? <br /> -->
+<!--               <a href="@{Application.signup()}">Join now for free.</a></span> </fieldset> -->
+<!--         </form> -->
+<!--         </div> -->
+<!--          #{/if} -->
+<!--          #{else} -->
+<!--         <div id="loginBMIDiv"> <span id="welcome">Welcome, ${signedUser.firstName}</span> -->
+<!--         <h5>Recent BMI Report</h5> -->
+<!--         <span id="age">Age: </span> <span id="weight">Weight: </span> <span -->
+<!--           id="height">Height: </span> <span id="bmi">BMI: </span> -->
            
-          <a href="@{Application.signout()}">Sign out</a>
-          </div>
+<!--           <a href="@{Application.signout()}">Sign out</a> -->
+<!--           </div> -->
     	 
-		#{/else}
-      <div id="workoutDiv">Workout Woman</div>
-      <div id="searchDiv">
-        <form action="submit" id="frmSearch" name="frmSearch" method="post">
-          Search     <input type="text" name="txtSearch" id="txtSearch" /> </form>
-      </div>
-      <div id="advertDiv1" class="advertDiv"></div>
-      <div id="advertDiv2" class="advertDiv"></div>
-      <div id="advertDiv3" class="advertDiv"></div>
-    </div>
-    <div id="clearDiv"></div>
-    <br />
-    <div id="footerDiv"> Copyright 2013</div>
-  </body>
-</html>
+<!-- 		#{/else} -->
+<!--       <div id="workoutDiv">Workout Woman</div> -->
+<!--       <div id="searchDiv"> -->
+<!--         <form action="submit" id="frmSearch" name="frmSearch" method="post"> -->
+<!--           Search     <input type="text" name="txtSearch" id="txtSearch" /> </form> -->
+<!--       </div> -->
+<!--       <div id="advertDiv1" class="advertDiv"></div> -->
+<!--       <div id="advertDiv2" class="advertDiv"></div> -->
+<!--       <div id="advertDiv3" class="advertDiv"></div> -->
+<!--     </div> -->
+<!--     <div id="clearDiv"></div> -->
+<!--     <br /> -->
+<!--     <div id="footerDiv"> Copyright 2013</div> -->
+<!--   </body> -->
+<!-- </html> -->

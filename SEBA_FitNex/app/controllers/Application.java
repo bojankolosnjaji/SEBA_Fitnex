@@ -7,16 +7,38 @@ import java.util.Date;
 import models.Address;
 import models.Gender;
 import models.User;
+import play.cache.Cache;
 import play.mvc.Controller;
+import play.mvc.Scope;
+import play.mvc.Scope.Session;
 
 public class Application extends Controller {
 
     public static void index(User signedUser) {
+    	
+    	
+    	
     	System.out.println("INDEX");
     	if (signedUser==null || signedUser.email==null)
     	{
-    		System.out.println("No user");
-    		renderTemplate("Application/index.html");
+    		
+    		//User user = Cache.get(session.getId() + "-user", User.class);
+    		signedUser=User.convertToUser(Security.session.get("user"));
+
+    	    if(signedUser == null) {
+    	        // Cache miss
+    	    	
+    	    	System.out.println("No user");
+        		renderTemplate("Application/index.html");
+    	        
+    	    }
+
+    	    else
+        	{
+        		System.out.println("User signed in"+signedUser.email);
+        		renderTemplate("Application/index.html", signedUser); 
+        	}
+    		
     	}
     	else
     	{
@@ -37,6 +59,7 @@ public class Application extends Controller {
     	
     	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date dateStr;
+        User user=null;
 		try {
 			dateStr = formatter.parse(txtDOB);
 			
@@ -47,7 +70,7 @@ public class Application extends Controller {
 				engender = Gender.FEMALE;
 			System.out.println("First name: " + txtFirstName);
 
-			User user = new User(txtEmail, txtPassword, txtFirstName, txtLastName, dateStr, engender, Double.parseDouble(txtWeight), address, txtPhoneNumber, txtMobile);
+			user = new User(txtEmail, txtPassword, txtFirstName, txtLastName, dateStr, engender, Double.parseDouble(txtWeight), address, txtPhoneNumber, txtMobile);
 			System.out.println("E-mail: " + user.email);
 			address.save();
 			user.save();
@@ -55,8 +78,10 @@ public class Application extends Controller {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-    	
-    	index(null);
+		
+		//Cache.set(session.getId() + "-user", user, "30mn");
+		Security.session.put("user", user.convertToString());
+    	index(user);
     }
     
     public static void signinform(String txtUsername, String txtPassword){
@@ -65,40 +90,51 @@ public class Application extends Controller {
     	User signedUser = (User) User.find("email = ? AND password = ?", txtUsername, txtPassword).first();
     	if (signedUser!=null)
     	{
-    		Security.session.put("user", signedUser.email);
+    		//Security.session.put("user", signedUser.email);
+    		Security.session.put("user", signedUser.convertToString());
     		System.out.println("Name:" + signedUser.firstName + " " + signedUser.lastName); 
     		renderTemplate("Application/index.html", signedUser);   		
     	}
     	else
     	{
-    		renderTemplate("Application/index.html");
+    		Boolean wrongCred=true;
+    		renderTemplate("Application/index.html",wrongCred);
     	}
     	
     }
     
     public static void signout(String email)
     {
+    	Security.session.put("user", null);
     	renderTemplate("Application/index.html");
     }
     
     public static void bmi_calculator() {
-        render();
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+    	render(signedUser);
     }
 
     public static void bmi_history() {
-        render();
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+    	render(signedUser);
     }
 
     public static void about_us() {
-        render();
+    	
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+    	render(signedUser);
+	        
+	    
     }
 
     public static void equipments_for_you() {
-        render();
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+        render(signedUser);
     }
 
     public static void contact() {
-        render();
+    	User signedUser=User.convertToUser(Security.session.get("user"));
+    	render(signedUser);
     }
 
 }
