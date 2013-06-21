@@ -40,14 +40,18 @@ public class LogMaker {
 
 			  }
 
-			File logFile = new File(todayDir+"\\"+logType + "_log.txt");
+			File logFile = new File(todayDir + "\\" + logType + "_log.txt");
 
 			try {
 				FileWriter fileWritter = new FileWriter(logFile, true);
 				BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
-				
-				bufferWritter.write(signedUser.id + ": " + date + ": "
-						+ message+"\n");
+				if (signedUser != null)
+					bufferWritter.write(signedUser.id + ": " + date + ": "
+							+ message + "\n");
+
+				else
+					bufferWritter.write("No id" + ": " + date + ": " + message
+							+ "\n");
 
 				bufferWritter.close();
 			} catch (IOException e) {
