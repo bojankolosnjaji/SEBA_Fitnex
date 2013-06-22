@@ -5,7 +5,6 @@ import java.util.Date;
 import models.BMIHistory;
 import models.User;
 import play.mvc.Controller;
-import play.mvc.With;
 
 //@With(Secure.class)
 public class BMIHistoryController extends Controller {
@@ -17,7 +16,7 @@ public class BMIHistoryController extends Controller {
 		String email = null;
 		if (signedUser != null) {
 			email = signedUser.email;
-
+			signedUser = User.find("byEmail", signedUser.email).first();
 			BMIHistory history = new BMIHistory(signedUser, new Date(),
 					Float.parseFloat(hiddenWeight),
 					Float.parseFloat(hiddenHeight), Float.parseFloat(hiddenBMI));
