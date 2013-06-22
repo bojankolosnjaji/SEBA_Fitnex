@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 @Entity
@@ -26,6 +27,7 @@ public class ArticleComment extends Model{
     private List<ArticleComment> children;
 	
     public String title;
+    @Required
 	public String content;
 	public Date date;
 	

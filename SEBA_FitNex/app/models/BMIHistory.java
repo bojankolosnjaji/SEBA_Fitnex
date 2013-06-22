@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
+import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import com.google.gson.Gson;
@@ -16,14 +17,17 @@ import com.google.gson.GsonBuilder;
 public class BMIHistory extends Model implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.LAZY)
+	@Required
     public User user;
 	
+	@Required
 	public Date date;
 	
+	@Required
 	public float weight;
-	
+	@Required
 	public float height;
-	
+	@Required
 	public float BMIValue;
 
 	public BMIHistory(User user, Date date, float weight, float height,

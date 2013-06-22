@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import play.data.validation.Required;
 import play.data.validation.Unique;
 import play.db.jpa.GenericModel;
  
@@ -23,12 +24,19 @@ public class User extends GenericModel implements Serializable{
 	public Long id; 
 	
 	@Unique
+	@Required
     public String email;
 	
+	@Required
     public String password;
+	
+	@Required
     public String firstName;
+	@Required
     public String lastName;
+	@Required
     public Date dateOfBirth;
+	@Required
     public Gender gender;
     public double weight;
     public double height;
@@ -130,6 +138,10 @@ public class User extends GenericModel implements Serializable{
 		}
 		ret += "]]";
 		return ret;
+	}
+	
+	public String toString() {
+	    return email;
 	}
 	
 }
