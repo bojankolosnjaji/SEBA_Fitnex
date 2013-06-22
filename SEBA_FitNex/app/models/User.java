@@ -1,8 +1,8 @@
 package models;
  
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -13,12 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
- 
+
 import play.data.validation.Unique;
 import play.db.jpa.GenericModel;
  
 @Entity
-public class User extends GenericModel {
+public class User extends GenericModel implements Serializable{
 	@Id @GeneratedValue (strategy = GenerationType.SEQUENCE) 
 	public Long id; 
 	
@@ -108,4 +108,28 @@ public class User extends GenericModel {
 		
 		return user;
 	}
+	
+	public String getBMIChartData()
+	{		
+		boolean first = true;
+		Calendar calendar = Calendar.getInstance();          
+		String ret = "";
+		for (BMIHistory history: BMIHistoryList)
+		{
+			calendar.setTime(history.date);
+			if (first)
+			{
+				ret += "[" ;
+				first = false;
+			}
+			else
+			{
+				ret += "],";
+			}
+			ret += ("[Date.UTC(" + calendar.get(Calendar.YEAR) + "," + calendar.get(Calendar.MONTH) + "," + calendar.get(Calendar.DATE) + ")," + history.BMIValue);
+		}
+		ret += "]]";
+		return ret;
+	}
+	
 }

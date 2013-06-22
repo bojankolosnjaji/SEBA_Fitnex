@@ -1,12 +1,13 @@
 package controllers;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import models.BMIHistory;
 import models.User;
 import play.mvc.Controller;
 
-public class BMIHistoryController extends Controller {
+public class BMIHistoryController extends Controller implements Serializable {
 
 	public static void bmihistoryadd(String hiddenWeight, String hiddenHeight,
 			String hiddenBMI) {
@@ -48,6 +49,19 @@ public class BMIHistoryController extends Controller {
 		{
 			renderTemplate("Application/bmi_history.html", signedUser);
 		}
+	}
+	
+	public static String getBMIHistoryChartData(){
+		User signedUser = User.convertToUser(Security.session.get("user"));
+		String email = null;
+		if (signedUser != null)
+			email = signedUser.email;
+
+		signedUser = (User) User.find("byEmail", email).first();
+		System.out.println(signedUser.BMIHistoryList.size());
+		
+	    return BMIHistory.getBMIHistoryChartData(signedUser);
+	    
 	}
 
 }
