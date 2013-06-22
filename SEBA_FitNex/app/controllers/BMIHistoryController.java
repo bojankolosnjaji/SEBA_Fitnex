@@ -6,7 +6,6 @@ import models.BMIHistory;
 import models.User;
 import play.mvc.Controller;
 
-//@With(Secure.class)
 public class BMIHistoryController extends Controller {
 
 	public static void bmihistoryadd(String hiddenWeight, String hiddenHeight,
