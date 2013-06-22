@@ -7,30 +7,32 @@ import models.User;
 import play.mvc.Controller;
 import play.mvc.With;
 
+//@With(Secure.class)
+public class BMIHistoryController extends Controller {
 
-@With(Secure.class)
-public class BMIHistoryController extends Controller{
-	
-	public static void bmihistoryadd(String weight, String height, String bmivalue)
-	{
+	public static void bmihistoryadd(String hiddenWeight, String hiddenHeight,
+			String hiddenBMI) {
 		// String email = Security.connected();
 		User signedUser = User.convertToUser(Security.session.get("user"));
 		String email = null;
-		if (signedUser != null)
+		if (signedUser != null) {
 			email = signedUser.email;
 
-		User user = (User) User.find("byEmail", email).fetch();
-		BMIHistory history = new BMIHistory(user, new Date(),
-				Float.parseFloat(weight), Float.parseFloat(height),
-				Float.parseFloat(bmivalue));
-		history.save();
+			BMIHistory history = new BMIHistory(signedUser, new Date(),
+					Float.parseFloat(hiddenWeight),
+					Float.parseFloat(hiddenHeight), Float.parseFloat(hiddenBMI));
+			history.save();
+			System.out.println(signedUser.BMIHistoryList.size());
+			LogMaker.log("BMI_Activity", signedUser, "has added a BMI");
 
-		LogMaker.log("BMI_Activity", signedUser,
-				"has added a BMI");
+			renderTemplate("Application/bmi_history.html",
+					signedUser);
+		} else {
+			renderTemplate("Application/index.html");
+		}
 	}
-	
-	public static void bmihistory()
-	{
+
+	public static void bmihistory() {
 		// String email = Security.connected();
 		User signedUser = User.convertToUser(Security.session.get("user"));
 		String email = null;
@@ -38,8 +40,16 @@ public class BMIHistoryController extends Controller{
 			email = signedUser.email;
 
 		User user = (User) User.find("byEmail", email).first();
+		signedUser = user;
 		if (user != null)
-			renderTemplate("Application/bmi_history.html", user.BMIHistoryList);	
+		{		
+			System.out.println(signedUser.email);
+			renderTemplate("Application/bmi_history.html", signedUser);
+		}
+		else
+		{
+			renderTemplate("Application/bmi_history.html", signedUser);
+		}
 	}
 
 }

@@ -126,6 +126,12 @@
 	 <br style="clear:both;"/>
 	<br /><br />
 	<span style="margin-left: 3em;"><a href="/bmi_history.html">BMI History</a></span>
+	<form action="@{BMIHistoryController.bmihistoryadd()}">
+	<input id="hiddenBMI" name="hiddenBMI" type="hidden">
+	<input id="hiddenWeight" name="hiddenWeight" type="hidden">
+	<input id="hiddenHeight" name = "hiddenHeight" type="hidden">
+	<span style="margin-left: 3em;"><button type="submit">Add to BMI History</button> </span>
+	</form>
         </div>
       </div>
     </div>

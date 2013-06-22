@@ -5,12 +5,13 @@
     <script type="text/javascript">
 	function calculateBMI()
 	{
-		//alert("hi");
-		weight = document.getElementById("txtWeight").innerHTML;
-		height = document.getElementById("txtHeight").innerHTML;
-		bmi =  weight/(height*height);
-		alert("hi " + weight);
-		document.getElementById("txtBMI").innerHTML = bmi;
+		var weight = document.getElementById("txtWeight");
+		var height = document.getElementById("txtHeight");
+		var bmi =  weight.value/(height.value*height.value)*10000;		
+		document.getElementById("txtBMI").value = bmi;
+		document.getElementById("hiddenBMI").value = bmi;
+		document.getElementById("hiddenHeight").value = weight.value
+		document.getElementById("hiddenWeight").value = height.value;
 	}
 	</script>
         <title>#{get 'title' /}</title>
