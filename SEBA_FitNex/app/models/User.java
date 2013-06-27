@@ -57,6 +57,9 @@ public class User extends GenericModel implements Serializable{
     @OneToMany(mappedBy="user")
     public List<BMIHistory> BMIHistoryList;
     
+    @OneToMany(mappedBy="user")
+    public List<WorkoutPlan> workoutPlans;
+    
     @OneToOne
     @JoinColumn(name="address_id", referencedColumnName="id") 
     public Address address;
@@ -83,6 +86,7 @@ public class User extends GenericModel implements Serializable{
 		this.exerciseComments = new ArrayList<ExerciseComment>();
 		this.userExercisePreferences = new ArrayList<UserExercisePreference>();
 		this.BMIHistoryList= new ArrayList<BMIHistory>();
+		this.workoutPlans = new ArrayList<WorkoutPlan>();
 		this.address = address;
 		this.phone = phone;
 		this.mobile = mobile;	

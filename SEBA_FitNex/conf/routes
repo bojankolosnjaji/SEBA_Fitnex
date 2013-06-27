@@ -12,6 +12,8 @@ GET     /bmi_history.html                    BMIHistoryController.bmihistory
 GET     /about_us.html                    	Application.about_us
 GET     /equipments_for_you.html                Application.equipments_for_you
 GET     /contact.html                    	Application.contact
+GET     /workout_plan.html                    	WorkoutPlan.workoutplan
+
 
 # Pages for articles
 GET     /Articles/article.html          	Articles.article

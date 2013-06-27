@@ -31,8 +31,15 @@ public class Exercise extends Model{
     @OneToMany(mappedBy="exercise")
     public List<UserExercisePreference> userPreferences;
     
+    @OneToMany(mappedBy="exercise")
+    public List<WorkoutPlan> workoutPlans;
+    
+    int daysPerWeek;
+    
+    int timePerDay; 
+    
     public Exercise(String title, String content, String image, Date date,
-    		ExerciseCategory category, ExerciseLevel level) {
+    		ExerciseCategory category, ExerciseLevel level, int daysPerWeek, int timePerDay) {
 		super();
 		this.title = title;
 		this.content = content;
@@ -40,6 +47,8 @@ public class Exercise extends Model{
 		this.date = date;
 		this.category = category;
 		this.level = level;
+		this.daysPerWeek = daysPerWeek;
+		this.timePerDay = timePerDay;
 		
 	}
 	
