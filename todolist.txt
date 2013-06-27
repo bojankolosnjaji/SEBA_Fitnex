@@ -1,0 +1,14 @@
+1. Fix login {done}
+2. BMI History {done}
+3. Ranking
+4. User preferences, equipment for you
+5. Workout plan
+6. Admin {in progress}
+7. Bootstrap
+8. UI Fix-up {General review of UI, scrolling issue}
+a. scrolling mechanism on BMI History page,
+b. Add title field for comments
+c. broken link to about_us.html on tutorial.html
+d. make a little template for tutorial steps.
+e. change equipment pictures on equipment.html
+f. add rank UI at bottom of articles, tutorials and exercises, with placeholder for image
