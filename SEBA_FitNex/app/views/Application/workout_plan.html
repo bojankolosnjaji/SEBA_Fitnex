@@ -1,73 +1,109 @@
 #{extends 'fitness-template.html' /}
-#{set title:'Equipments For You' /}
+#{set title:'Workout plan' /}
 #{set moreStyles:"
-	#breadCrumbsDiv{
-	margin-top: -3.5%;
-	} 
 
-	.control-group span{
-	display: block;
-	margin-left: 16%;
+	#mainContentDiv{
+	overflow: auto;
+	}
+
+	#mainContentDiv h3{
+	text-align: center;
+	font-weight: bold;
+	margin-top: 1px;
+	}
+
+  	.equipmentsLineDiv a img{
+	border: solid 1px #000;
+	float: left;
+	height: 30%;
+	width: 32%;
 	}
 " /}
-#{set workoutPlan:"current" /}
-#{set banner:"/public/images/banner_exercises.png" /}
-<div id="contentnav">
-		<div class="navbar" >
-		  <div class="navbar-inner" >
-			<a class="brand" href="#">Organize Workout</a>
-			<ul class="nav">
-			  <li class="active"><a href="/workout_plan.html">Create a Plan</a></li>
-			  <li><a href="/workout_view.html">View Plans</a></li>
-			</ul>
-		  </div>
-		</div>
-		</div>	
-      <div id="breadCrumbsDiv">
-		  <ul class="breadcrumb">
-		  <li><a href="/">Home</a> <span class="divider">/</span></li>
-		  <li><a href="/workout_plan.html">Workout Plan</a> <span class="divider">/</span></li>
-		</ul>
-	 </div>
-    	<br /><br />
-	<form class="form-horizontal" name="frmPlan" id="frmPlan" action="">
-	  <div class="control-group">
-	    <label class="control-label" for="txtStartDate">Start Date</label>
-	    <div class="controls">
-	      <input type="text" id="txtStartDate" name="txtStartDate" placeholder="Start Date">
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <label class="control-label" for="txtEndDate">End Date</label>
-	    <div class="controls">
-	      <input type="text" id="txtEndDate" name="txtEndDate" placeholder="End Date">
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <span>Select Workout Days</span>
-	    <div class="controls">
-		<label class="checkbox">
-			<input type="checkbox" id="chkMon" name="chkMon" value="monday"> Monday
-		</label>
-		<label class="checkbox">
-			<input type="checkbox" id="chkTue" name="chkTue" value="tuesday"> Tuesday
-		</label>
-		<label class="checkbox">
-			<input type="checkbox" id="chkWed" name="chkWed" value="wednesday"> Wednesday
-		</label>
-		<label class="checkbox">
-			<input type="checkbox" id="chkThu" name="chkThu" value="thursday"> Thursday
-		</label>
-		<label class="checkbox">
-			<input type="checkbox" id="chkFri" name="chkFri" value="friday"> Friday
-		</label>
-		<label class="checkbox">
-			<input type="checkbox" id="chkSat" name="chkSat" value="saturday"> Saturday
-		</label>
-		<label class="checkbox">
-			<input type="checkbox" id="chkSun" name="chkSun" value="sunday"> Sunday
-                </label><br />
-	      <button type="submit" class="btn">Add Plan</button>
-	    </div>
-	</form>
-    </div>
+
+	<script>
+
+	$(document).ready(function() {
+
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
+
+		var calendar = $('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			selectable: true,
+			selectHelper: true,
+			select: function(start, end, allDay) {
+				var title = prompt('Event Title:');
+				if (title) {
+					calendar.fullCalendar('renderEvent',
+						{
+							title: title,
+							start: start,
+							end: end,
+							allDay: allDay
+						},
+						true // make the event "stick"
+					);
+				}
+				calendar.fullCalendar('unselect');
+			},
+			editable: true,
+			events: [
+				{
+					title: 'All Day Event',
+					start: new Date(y, m, 1)
+				},
+				{
+					title: 'Long Event',
+					start: new Date(y, m, d-5),
+					end: new Date(y, m, d-2)
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d-3, 16, 0),
+					allDay: false
+				},
+				{
+					id: 999,
+					title: 'Repeating Event',
+					start: new Date(y, m, d+4, 16, 0),
+					allDay: false
+				},
+				{
+					title: 'Meeting',
+					start: new Date(y, m, d, 10, 30),
+					allDay: false
+				},
+				{
+					title: 'Lunch',
+					start: new Date(y, m, d, 12, 0),
+					end: new Date(y, m, d, 14, 0),
+					allDay: false
+				},
+				{
+					title: 'Birthday Party',
+					start: new Date(y, m, d+1, 19, 0),
+					end: new Date(y, m, d+1, 22, 30),
+					allDay: false
+				},
+				{
+					title: 'Click for Google',
+					start: new Date(y, m, 28),
+					end: new Date(y, m, 29),
+					url: 'http://google.com/'
+				}
+			]
+		});
+
+	});
+
+</script>
+<div id="content" >
+	<div id="calendar"></div>
+</div>

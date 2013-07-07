@@ -27,4 +27,10 @@ public class WorkoutPlan extends Controller{
 		}
 		
 	}
+	
+	public static void addToWorkoutPlan()
+	{
+		
+		
+	}
 }

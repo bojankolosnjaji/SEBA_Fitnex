@@ -1,45 +1,71 @@
 #{extends 'fitness-template.html' /}
 #{set title:'BMI History' /}
-#{set moreStyles:"               
+#{set moreStyles:"
+	
+	#mainContentDiv h3{
+	paddingtop: 10px;
+	textalign: center;
+      }         
       
-      
-" /}
-#{set bmiCalculator:"current" /}
-#{set banner:"/public/images/banner_bmi.png" /}
-	<div id="contentnav">
-		<div class="navbar" >
-		  <div class="navbar-inner" >
-			<a class="brand" href="#">Body Mass Index</a>
-			<ul class="nav">
-			  <li><a href="/bmi_calculator.html">Calculator</a></li>
-			  <li class="active"><a href="/bmi_history.html">BMI History</a></li>
-			</ul>
-		  </div>
-		</div>
-		</div>
-      <div id="breadCrumbsDiv">
-		  <ul class="breadcrumb"  >
-		  <li><a href="/">Home</a> <span class="divider">/</span></li>
-		  <li><a href="/bmi_history.html">BMI History</a> <span class="divider">/</span></li>
-		</ul>
-	 </div>
+    #mainContentDiv #historyTable{
+  marginleft: 3em;  
+  width: 65%;
+      	}
 
-        <h3>BMI HISTORY</h3>          
-          <table id="historyTable" class="table table-striped">
-	    <thead>
-		<tr>
-                <th>SN</th>
-                <th>Weight (Kg)</th>
-		<th>Height (Cm)</th>
-		<th>BMI Value</th>
-              </tr>
-	    </thead>
-            <tbody>              
-              <tr>
-                <td>1</td>
-                <td>60</td>
-		<td>5m</td>
-		<td>42</td>
-              </tr>              
-            </tbody>
-          </table>
+#historyTable td{ textalign: center; } " /}
+
+<script>
+  $(function() {
+    $('#container').highcharts({
+      chart : {
+        type: 'line'
+      },
+      title : {
+        text : 'BMI history'
+      },
+      xAxis : {
+        type: 'datetime',
+        title : { 
+          text : 'Date' 
+          } 
+      },
+      yAxis : {
+        title : {
+          text : 'BMI'
+        }
+      },
+      series : [ {      
+        data: ${signedUser.getBMIChartData()}
+      }],
+    });
+  });
+</script>
+  <div id="content">
+    <h3>BMI HISTORY</h3>
+    <table id="historyTable" border="1">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Weight (Kg)</th>
+          <th>Height (Cm)</th>
+          <th>BMI Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        #{if signedUser!=null } #{list signedUser.BMIHistoryList,
+        as:'bmiHistory'}
+        <tr>
+          <td>${bmiHistory.date}</td>
+          <td>${bmiHistory.weight}</td>
+          <td>${bmiHistory.height}</td>
+          <td>${bmiHistory.BMIValue}</td>
+        </tr>
+        #{/list} #{/if} #{else} Please sign in first. #{/else}
+      </tbody>
+    </table>
+    <br><br>
+    <div id="container" ></div>
+    
+  </div>
+</div>
+ 

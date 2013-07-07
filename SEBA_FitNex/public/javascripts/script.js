@@ -34,7 +34,10 @@ function bmiCalculate(){
  var bmi= weight/(height*height);
  var result="BMI Value: "+bmi;
  if(height!='')
- document.getElementById("bmiResult").innerHTML=result;
+ document.getElementById("bmiResult").innerHTML=result; 
+	document.getElementById("hiddenBMI").value = bmi;
+	document.getElementById("hiddenHeight").value = height;
+	document.getElementById("hiddenWeight").value = weight;
 }
 
 function populateDay(){

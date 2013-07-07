@@ -55,13 +55,11 @@ public class Application extends Controller {
     public static void signupform(String txtFirstName, String txtLastName, String txtEmail, String txtPassword, String txtRepPassword, String selDay, String selMonth, String selYear, String txtWeight, String rdGender, String txtStreet, String txtNumber, String txtCity, String txtProvince, String txtCountry, String txtPhoneNumber, String txtMobile, String chkAgree){
     	Address address = new Address(txtStreet, txtNumber, txtCity, txtProvince, txtCountry);
     	
-    	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date dateStr;
         User user=null;
 		Calendar cal = Calendar.getInstance();
 		cal.set(Integer.parseInt(selDay), Integer.parseInt(selMonth), Integer.parseInt(selYear));
 		dateStr = cal.getTime();
-		
 		
 		Gender engender;
 		if (rdGender.equals("male"))
@@ -88,6 +86,7 @@ public class Application extends Controller {
     	User signedUser = (User) User.find("email = ? AND password = ?", txtUsername, txtPassword).first();
     	if (signedUser!=null)
     	{
+    		System.out.println("User found");
     		//Security.session.put("user", signedUser.email);
     		Security.session.put("user", signedUser.convertToString());
     		System.out.println("Name:" + signedUser.firstName + " " + signedUser.lastName); 
@@ -101,6 +100,7 @@ public class Application extends Controller {
     		LogMaker.log("UserActivity", null, "failed sign in");
     		Boolean wrongCred=true;
     		renderTemplate("Application/index.html",wrongCred);
+    		System.out.println("User not found");
     	}
     	
     }

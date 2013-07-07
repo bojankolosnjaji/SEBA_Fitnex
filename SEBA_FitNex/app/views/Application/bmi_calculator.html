@@ -100,7 +100,14 @@
 			  <button type="button" onclick="bmiCalculate()" class="btn btn-inverse btn-large">Calculate</button>
 			</div>
 		  </div>
+		  	  
 	</form>
+		  <form action="@{BMIHistoryController.bmihistoryadd()}">
+	<input id="hiddenBMI" name="hiddenBMI" type="hidden">
+	<input id="hiddenWeight" name="hiddenWeight" type="hidden">
+	<input id="hiddenHeight" name = "hiddenHeight" type="hidden">
+	<span style="margin-left: 3em;"><button type="submit" class="btn btn-inverse btn-large">Add to BMI History</button> </span>
+	 		</form> 
         </div>                 
 	 <br style="clear:both;"/>
 	<span id="bmiResult"></span>
