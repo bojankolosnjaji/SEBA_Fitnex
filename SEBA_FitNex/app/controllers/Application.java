@@ -2,15 +2,13 @@ package controllers;
 //test
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import models.Address;
 import models.Gender;
 import models.User;
-import play.cache.Cache;
 import play.mvc.Controller;
-import play.mvc.Scope;
-import play.mvc.Scope.Session;
 
 public class Application extends Controller {
 
@@ -54,30 +52,28 @@ public class Application extends Controller {
     	renderTemplate("Application/registration.html");
     } 
     
-    public static void signupform(String txtFirstName, String txtLastName, String txtEmail, String txtPassword, String txtRepPassword, String txtDOB, String txtWeight, String rdGender, String txtStreet, String txtNumber, String txtCity, String txtProvince, String txtCountry, String txtPhoneNumber, String txtMobile, String chkAgree){
+    public static void signupform(String txtFirstName, String txtLastName, String txtEmail, String txtPassword, String txtRepPassword, String selDay, String selMonth, String selYear, String txtWeight, String rdGender, String txtStreet, String txtNumber, String txtCity, String txtProvince, String txtCountry, String txtPhoneNumber, String txtMobile, String chkAgree){
     	Address address = new Address(txtStreet, txtNumber, txtCity, txtProvince, txtCountry);
     	
     	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         Date dateStr;
         User user=null;
-		try {
-			dateStr = formatter.parse(txtDOB);
-			
-			Gender engender;
-			if (rdGender.equals("male"))
-				engender = Gender.MALE;
-			else
-				engender = Gender.FEMALE;
-			System.out.println("First name: " + txtFirstName);
+		Calendar cal = Calendar.getInstance();
+		cal.set(Integer.parseInt(selDay), Integer.parseInt(selMonth), Integer.parseInt(selYear));
+		dateStr = cal.getTime();
+		
+		
+		Gender engender;
+		if (rdGender.equals("male"))
+			engender = Gender.MALE;
+		else
+			engender = Gender.FEMALE;
+		System.out.println("First name: " + txtFirstName);
 
-			user = new User(txtEmail, txtPassword, txtFirstName, txtLastName, dateStr, engender, Double.parseDouble(txtWeight), address, txtPhoneNumber, txtMobile);
-			System.out.println("E-mail: " + user.email);
-			address.save();
-			user.save();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+		user = new User(txtEmail, txtPassword, txtFirstName, txtLastName, dateStr, engender, Double.parseDouble(txtWeight), address, txtPhoneNumber, txtMobile);
+		System.out.println("E-mail: " + user.email);
+		address.save();
+		user.save(); 
 		
 		LogMaker.log("UserActivity", user, "has just registred");
 		

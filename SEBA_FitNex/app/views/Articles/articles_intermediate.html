@@ -1,121 +1,33 @@
 #{extends 'fitness-template.html' /}
 #{set title:'Intermediate Articles' /}
-#{set moreStyles:"
-   #mainContentDiv ul{
-        list-style-type: square;
-      }                    
-      
-      #mainContentDiv ul li{
-      font-size: 0.8em;
-        margin-top: 2em;
-      }
-      
-      #mainContentDiv form table td{
-        font-size:0.8em;
-      }
-      
-      #mainContentDiv form table td.current{
-        text-align: right;
-      }
-      
-      #mainContentDiv form legend{
-        font-size:0.85em;
-          font-weight:bold;
-      }
-          
-      #mainContentDiv h4{
-        padding-top: 0.2em;
-        text-align: left;  
-        height:10px;
-        margin-left: 1em;
-      }
-      
-      #mainContentDiv table.results{
-       margin-left: 0.5em;
-        width: 95%;
-        border: solid 1px;
-      }
-      
-      #mainContentDiv table th{
-       font-size: 0.9em;
-        width: 33%;
-      }
-"/}
-
-    <div id="leftDiv">
-      <div id="logoDiv"> <img src="@{'/public/images/logo.png'}" style="height:100%;width:100%;"></img> </div>
-      <div id="leftNavDiv">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about_us.html">About Us</a></li>
-          <li><a href="/Articles/articles.html" class="current">Articles</a></li>
-          <ul id="ArticleLevels">
-            <li><a href="/Articles/articles_beginner.html">Beginner</a></li>
-            <li><a href="/Articles/articles_intermediate.html" class="current">Intermediate</a></li>
-            <li><a href="/Articles/articles_expert.html">Expert</a></li>
-          </ul>
-          <li><a href="/Tutorials/tutorials.html">Tutorials</a></li>
-          <li><a href="/Exercises/exercises.html">Exercises</a></li>
-          <li><a href="/bmi_calculator.html">BMI Calculator</a></li>
-	  <li><a href="/bmi_history.html">BMI History</a></li>
-          <li><a href="/equipments-for-you.html">Equipments for you!</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div id="centreDiv">
-      <div id="inspireQuotesDiv"> <img src="@{'/public/images/banner_articles.png'}" style="height:100%;width:100%;"></img></div>
-      <div id="breadCrumbsDiv"><a href="/">Home</a> &gt; <a href="/Articles/articles.html">Articles</a>
-        &gt; <a href="/Articles/articles_intermediate.html">Intermediate</a></div>
-      <div id="mainContentDiv">
-        <h4>Intermediate Articles</h4>
+#{set articles:"current" /}
+#{set banner:"/public/images/banner_articles.png" /}
+<div>
+		<div class="navbar" id="contentnav">
+		  <div class="navbar-inner" >
+			<a class="brand" href="/Articles/articles.html">Articles</a>
+			<ul class="nav">
+			  <li><a href="/Articles/articles_beginner.html">Beginner</a></li>
+			  <li class="active"><a href="/Articles/articles_intermediate.html">Intermediate</a></li>
+			  <li><a href="/Articles/articles_expert.html">Expert</a></li>
+			</ul>
+		  </div>
+		</div>
+		</div>		
+      <div id="breadCrumbsDiv">	  
+	  <ul class="breadcrumb">
+		  <li><a href="/">Home</a> <span class="divider">/</span></li>
+		  <li><a href="/Articles/articles.html">Articles</a> <span class="divider">/</span></li>
+		</ul>
+	  </div>
+      <div id="content">
+        <h3>Intermediate Articles</h3>
         <ul>
           #{list articleList, as:'article'}
     			<li><a href = "@{Articles.loadArticle(article.id)}">${article.title}</a></li>
 		  #{/list}  
 		  #{else}
-			No articles for mow
+			No articles for now
 		  #{/else}        
         </ul>
-        <br />
-        <br />
       </div>
-    </div>
-<!--     <div id="rightDiv"> -->
-<!--      #{if !signedUser}     -->
-<!--        <div id="loginBMIDiv">	  -->
-      
-<!--         <form method="post" name="frmLogin" id="frmLogin" action="@{Application.signinform()}"> -->
-<!--           <fieldset> <legend>Login</legend> <span>Username</span>    <input type="text" -->
-<!--               id="txtUsername" name="txtUsername" /> <br /> -->
-<!--             <span>Password</span>     <input type="password" id="txtPassword" name="txtPassword" /><br /> -->
-<!--             <input type="submit" id="btnSubmit" name="btnSubmit" value="Login" /><br /> -->
-<!--             <span>Don't have an account? <br /> -->
-<!--               <a href="@{Application.signup()}">Join now for free.</a></span> </fieldset> -->
-<!--         </form> -->
-<!--         </div> -->
-<!--          #{/if} -->
-<!--          #{else} -->
-<!--         <div id="loginBMIDiv"> <span id="welcome">Welcome, ${signedUser.firstName}</span> -->
-<!--         <h5>Recent BMI Report</h5> -->
-<!--         <span id="age">Age: </span> <span id="weight">Weight: </span> <span -->
-<!--           id="height">Height: </span> <span id="bmi">BMI: </span> -->
-           
-<!--           <a href="@{Application.signout()}">Sign out</a> -->
-<!--           </div> -->
-    	 
-<!-- 		#{/else} -->
-<!--       <div id="workoutDiv">Workout Woman</div> -->
-<!--       <div id="searchDiv"> -->
-<!--         <form method="post" name="frmSearch" id="frmSearch" action="submit"> -->
-<!--           Search     <input type="text" id="txtSearch" name="txtSearch" /> </form> -->
-<!--       </div> -->
-<!--       <div class="advertDiv" id="advertDiv1"></div> -->
-<!--       <div class="advertDiv" id="advertDiv2"></div> -->
-<!--       <div class="advertDiv" id="advertDiv3"></div> -->
-<!--     </div> -->
-<!--     <div id="clearDiv"></div> -->
-<!--     <br /> -->
-<!--     <div id="footerDiv"> Copyright 2013</div> -->
-<!--   </body> -->
-<!-- </html> -->
